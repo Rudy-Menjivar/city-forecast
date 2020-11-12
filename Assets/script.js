@@ -16,11 +16,15 @@ function buildQueryURL() {
     console.log(weatherSearch);
     return weatherSearch
 }
+// Use API data for DOM print
+function renderWeather(weatherData) {
+    console.log(weatherData);
+}
 // Gets data from variable parameters & search DOM
 var queryURL = buildQueryURL();
 
 $.ajax({
     url: queryURL,
     method: "GET",
-  });
+  }).then(renderWeather);
 
