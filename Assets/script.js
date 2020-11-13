@@ -30,6 +30,9 @@ function renderWeather(weatherData) {
 // city name, date, weather conditions icon, temperature, humidity, wind speed & a color coded UV index
     var cityName = weatherData.name;
     console.log(cityName);
+    
+    var todaysDate = new Date().toLocaleDateString();
+    console.log(todaysDate);
 
     var temperature = weatherData.main.temp;
     console.log(temperature);
