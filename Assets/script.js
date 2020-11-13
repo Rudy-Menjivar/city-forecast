@@ -8,10 +8,9 @@ function buildQueryURL() {
     // .trim();
 
     var apiKey = "&appid=1e8fc86a78035a27df9655b63ddec145";
+    var units = "&units=imperial";
 // Build queryURL with weatherSearch
-    var weatherSearch = "http://api.openweathermap.org/data/2.5/weather?q="
-    + searchInput
-    + apiKey;
+    var weatherSearch = `http://api.openweathermap.org/data/2.5/weather?q=${searchInput}${apiKey}${units}`;
 
     console.log(weatherSearch);
     return weatherSearch
@@ -32,7 +31,8 @@ function renderWeather(weatherData) {
     var cityName = weatherData.name;
     console.log(cityName);
 
-    var cityName = weatherData.name;
+    var temperature = weatherData.main.temp;
+    console.log(temperature);
 }
 // Gets data from variable parameters & search DOM
 var queryURL = buildQueryURL();
