@@ -34,8 +34,18 @@ function renderWeather(weatherData) {
     var todaysDate = new Date().toLocaleDateString();
     console.log(todaysDate);
 
-    var temperature = weatherData.main.temp;
+    var title = cityName + " (" + todaysDate + ")"
+    console.log(title);
+
+    var temperature = "Temperature: " + weatherData.main.temp + " °F"
     console.log(temperature);
+
+    var humidity =  "Humidity: " + weatherData.main.humidity + "%"
+    console.log(humidity);
+
+    var windSpeed = "Wind Speed: " + weatherData.wind.speed + " MPH"
+    console.log(windSpeed);
+
 }
 // Gets data from variable parameters & search DOM
 var queryURL = buildQueryURL();
