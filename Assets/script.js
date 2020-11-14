@@ -3,9 +3,7 @@ function buildQueryURL() {
 
 // Get input value from search DOM & trim spaces if necessary
     var searchInput = "Sacramento"
-    // var searchInput = $("#search-input")
-    // .val()
-    // .trim();
+    // var searchInput = $("#search-input").val().trim();
 
     var apiKey = "&appid=1e8fc86a78035a27df9655b63ddec145";
     var units = "&units=imperial";
@@ -32,20 +30,18 @@ function renderWeather(weatherData) {
     console.log(cityName);
     
     var todaysDate = new Date().toLocaleDateString();
-    console.log(todaysDate);
 
-    var title = cityName + " (" + todaysDate + ")"
-    console.log(title);
+    var cityDate = cityName + " (" + todaysDate + ")"
 
-    var temperature = "Temperature: " + weatherData.main.temp + " °F"
-    console.log(temperature);
+    var temperature = $("<p>").addClass("card-text").text("Temperature: " + weatherData.main.temp + " °F")
 
-    var humidity =  "Humidity: " + weatherData.main.humidity + "%"
-    console.log(humidity);
+    var humidity = $("<p>").addClass("card-text").text("Humidity: " + weatherData.main.humidity + "%")
 
-    var windSpeed = "Wind Speed: " + weatherData.wind.speed + " MPH"
-    console.log(windSpeed);
+    var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + weatherData.wind.speed + " MPH")
 
+// Render Current Weather API data to DOM elements
+    $("#city-today").text(cityDate);
+    $("#current-forecast").append(temperature, humidity, windSpeed)
 }
 // Gets data from variable parameters & search DOM
 var queryURL = buildQueryURL();
