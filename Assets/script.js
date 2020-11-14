@@ -1,12 +1,16 @@
 // Initiate search with button click, then pass queryURL data
 $("#search-button").on("click", function() {
-    // Gets data from variable parameters & search DOM
-var queryURL = buildQueryURL();
 
+// Clear any previous current forcast data
+$("#current-forecast").empty();
+
+var queryURL = buildQueryURL();
 $.ajax({
     url: queryURL,
     method: "GET",
   }).then(weatherSearch);
+  // Clear search input after search
+  $("#search-input").val("");
 })
 
 // Gets input value from city search DOM, then builds queryURL
@@ -25,17 +29,9 @@ function buildQueryURL() {
 function weatherSearch(weatherData) {
     console.log(weatherData);
 
-// Create DOM elements with list-group class
-    var $currentConditions = $("<ul>");
-    $currentConditions.addClass("list-group");
-
-// Append weather details from API to current forecast div
-    $("#current-forecast").append($currentConditions);
-
 // Variables for DOM, to include:
 // city name, date, weather conditions icon, temperature, humidity, wind speed & a color coded UV index
     var cityName = weatherData.name;
-    console.log(cityName);  
     var todaysDate = new Date().toLocaleDateString();
     var cityDate = cityName + " (" + todaysDate + ")"
     var temperature = $("<p>").addClass("card-text").text("Temperature: " + weatherData.main.temp + " °F")
