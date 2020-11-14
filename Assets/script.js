@@ -38,6 +38,8 @@ function weatherSearch(weatherData) {
     var humidity = $("<p>").addClass("card-text").text("Humidity: " + weatherData.main.humidity + "%")
     var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + weatherData.wind.speed + " MPH")
 
+    // Remove hidden style visibility from card div
+    $(".card").removeAttr("style");
 // Render Current Weather API data to DOM elements
     $("#city-today").text(cityDate);
     $("#current-forecast").append(temperature, humidity, windSpeed)
